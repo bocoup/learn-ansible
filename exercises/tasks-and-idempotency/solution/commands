@@ -1,0 +1,9 @@
+vagrant up
+
+# only needed if bad entry is in known_hosts already
+ssh-keygen -R 10.10.10.10
+
+ansible-playbook -i 10.10.10.10, playbook.yml
+ssh 10.10.10.10 sudo apt-get remove git
+ansible-playbook -i 10.10.10.10, playbook.yml
+vagrant destroy
