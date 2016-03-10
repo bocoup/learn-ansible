@@ -1,0 +1,40 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    users:
+      - name: "{{ lookup('env', 'USER') }}"
+        state: present
+        public_keys:
+          - "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      - name: workshop
+        state: present
+        public_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3DmXNR1rP+CGfMmwcowd4wN9uf6lKaN++9SyowsOmVQyY+x1jlka4rFUxljDrbJLyTmmdwH4fcOs/6ixZlMnNkbYcC48F8YrHWZ6lcheak52q365NRViooG+LuVZU81DOv/+roY0eTBTs6d/mlRC8Us11kpKrtWi7zvFiv7Ld25Uo5yMPOxvDigJzrO0byVefq001mx5EEfDn9uH7nWU/e3wOIDls5kYtEWuI1QHWyOrbLe8O+YiHznBjWa2r6dCobr8KfyfwBuHy4PxS4f17GJ9kGQXWOrVOjMJiblkHndQ5dMn8hQAt6Vir0EJL3XFE0xox9oqxV/LCH9lHc6mj workshop
+  tasks:
+    # this should only be used for development!
+    - name: ensure sudo group can sudo without a password
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: "^%sudo"
+        line: "%sudo\tALL=(ALL:ALL) NOPASSWD:ALL"
+        validate: "visudo -cf %s"
+
+    - name: ensure users are synced
+      user:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+        shell: "{{ item.shell | default('/bin/bash') }}"
+        groups: "{{ item.groups | default('sudo') }}"
+        force: yes
+      with_items: users
+
+    - name: ensure user public keys are synced
+      authorized_key:
+        user: "{{ item.name }}"
+        key: "{{ item.public_keys | join('\n') }}"
+        state: present
+        exclusive: yes
+      with_items: users
+      when: "{{item.state == 'present'}}"
