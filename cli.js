@@ -22,9 +22,9 @@ const exercises = [
   'your-development-server',
   'permissions-elevation',
   'user-management',
-  'basic-loops-and-variables',
+  'variables-loops-and-filters',
   'tasks-and-idempotency',
-  'variables-and-control-flow',
+  'control-flow',
   'nginx-up-front',
   'services-templates-and-registering-variables',
   'your-production-server'
