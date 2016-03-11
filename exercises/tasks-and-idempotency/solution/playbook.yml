@@ -5,11 +5,6 @@
     - name: ensure apt cache is updated
       apt: update_cache=yes cache_valid_time=3600
 
-    - name: ensure node gpg key is installed
-      apt_key:
-        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-        state: present
-
     - name: ensure ruby ppa is installed
       apt_repository:
         repo: ppa:brightbox/ruby-ng
@@ -20,13 +15,15 @@
         repo: deb https://deb.nodesource.com/node_5.x trusty main
         state: present
 
-    - name: ensure git is installed
-      apt: name=git state=latest
+    - name: ensure node gpg key is installed
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        state: present
 
     - name: ensure nodejs is installed
       apt: name=nodejs state=latest
 
-    - name: ensure ruby is installed
+    - name: ensure ruby2.3 is installed
       apt: name=ruby2.3 state=latest
 
     - name: ensure nginx is installed

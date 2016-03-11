@@ -2,3 +2,10 @@
   become: yes
   become_method: sudo
   tasks:
+    - name: ensure apt cache is updated
+    - name: ensure ruby ppa is installed
+    - name: ensure node ppa is installed
+    - name: ensure node gpg key is installed
+    - name: ensure nodejs is installed
+    - name: ensure ruby2.3 is installed
+    - name: ensure nginx is installed
