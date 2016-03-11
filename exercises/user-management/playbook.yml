@@ -5,13 +5,13 @@
 #    - name: ensure workshop user is on the box
 #      user:
 #        state: present
-#        name: "USERNAME"
+#        name: USERNAME
 #        shell: /bin/bash
 #        groups: sudo
 #
 #    - name: ensure my user’s public key is present in authorized_keys
 #      authorized_key:
-#        user: "USERNAME"
+#        user: USERNAME
 #        key: "PUBLIC_KEY"
 #        state: present
 #
