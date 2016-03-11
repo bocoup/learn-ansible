@@ -13,15 +13,15 @@
 
     - name: ensure local user has a matching account on the host
       user:
-        name: "{{ lookup('env', 'USER') }}"
+        name: YOUR_USERNAME
         shell: /bin/bash
         groups: sudo
         state: present
 
     - name: ensure local user's public key is on the host
       authorized_key:
-        user: "{{ lookup('env', 'USER') }}"
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        user: YOUR_USERNAME
+        key: YOUR_PUBLIC_KEY
         state: present
 
     - name: ensure workshop user is on the box

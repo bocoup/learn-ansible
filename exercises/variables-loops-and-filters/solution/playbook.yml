@@ -3,10 +3,10 @@
   become_method: sudo
   vars:
     users:
-      - name: "{{ lookup('env', 'USER') }}"
+      - name: YOUR_USERNAME
         state: present
         public_keys:
-          - "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+          - YOUR_PUBLIC_KEY
       - name: workshop
         state: present
         public_keys:
