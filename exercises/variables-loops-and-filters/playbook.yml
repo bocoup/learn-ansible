@@ -1,0 +1,29 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: ensure local user has a matching account on the host
+      user:
+        name: YOUR_USERNAME
+        shell: /bin/bash
+        groups: sudo
+        state: present
+
+    - name: ensure local user's public key is on the host
+      authorized_key:
+        user: YOUR_USERNAME
+        key: YOUR_PUBLIC_KEY
+        state: present
+
+    - name: ensure workshop user is on the box
+      user:
+        name: workshop
+        shell: /bin/bash
+        groups: sudo
+        state: present
+
+    - name: ensure the workshop user's public key is present in authorized_keys
+      authorized_key:
+        user: workshop
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3DmXNR1rP+CGfMmwcowd4wN9uf6lKaN++9SyowsOmVQyY+x1jlka4rFUxljDrbJLyTmmdwH4fcOs/6ixZlMnNkbYcC48F8YrHWZ6lcheak52q365NRViooG+LuVZU81DOv/+roY0eTBTs6d/mlRC8Us11kpKrtWi7zvFiv7Ld25Uo5yMPOxvDigJzrO0byVefq001mx5EEfDn9uH7nWU/e3wOIDls5kYtEWuI1QHWyOrbLe8O+YiHznBjWa2r6dCobr8KfyfwBuHy4PxS4f17GJ9kGQXWOrVOjMJiblkHndQ5dMn8hQAt6Vir0EJL3XFE0xox9oqxV/LCH9lHc6mj workshop
+        state: present
