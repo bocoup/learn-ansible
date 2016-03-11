@@ -45,6 +45,27 @@ around permissions elevation. For the purposes of this workshop we will focus
 on giving your account full administrative rights. For a deep dive into what is
 possible, check out [the sudo manual](http://www.sudo.ws/sudo/man/1.8.2/sudoers.man.html).
 
+### ON PASSWORDLESS SUDO
+
+In the [learn-ssh](https://github.com/bocoup/learn-ssh) workshop we talked about
+the importance of protecting your SSH private key with a password to prevent it from 
+being used even if the file was stolen. This, along with only allowing users to 
+authenticate using SSH to non-root accounts should mean that we can feel pretty secure
+that only known users can access our server.
+
+By default `sudo` will prompt a user for their password before executing a command with
+elevated permissions. This is not meant to prevent bad actors from accessing 
+the system. Instead, the password prompt for permission elevation is meant to guard against 
+the scenario of an unattended workstation with an active session. It also provides time for fast 
+fingered users to reflect on the command they are about to run. 
+
+While using passwordless sudo in a local developement environment is risk free, there is a choice
+to be made for remote environments. Our recommendation is that remote servers require a password
+in order to elevate permission. Ansible and other tools have ways of securely loading credentials 
+like your password meaning you don't have to choose between automation and security. 
+
+We'll cover how to securely set a user's password in the user-management section.
+
 ## EXERCISE
 
 Log in to VM you created in the last exercise (as the user `vagrant`). Next,
