@@ -20,7 +20,7 @@ Create a playbook to manage users on your server and another to deploy one of
 the applications from the previous exercise.
 
 You'll know you've been successful when your fellow attendees can see your
-application in a browser via it's public IP address (e.g. http://54.23.14.31).
+application in a browser via it's public IP address (e.g. http://52.5.119.57).
 
 ## LEARNING OBJECTIVES
 
