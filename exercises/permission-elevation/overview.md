@@ -1,10 +1,10 @@
 # WHAT IS PERMISSION ELEVATION AND HOW/WHEN/WHY IS IT USED?
 
 It can be tempting to log in to your server as the administrator or root user.
-This is risky for several reasons. For starters, it is easy to run a destructive
-command when you don't mean to when your account has access to do anything.
-Likewise, if your session is ever compromised, or rogue software is running on
-your machine, it will have a much broader reach into your infrastructure.
+This is risky for several reasons. For starters, it is easy to accidentally run
+a destructive command when your account has access to do anything. Likewise, if
+your session is ever compromised, or rogue software is running on your machine,
+it will have a much broader reach into your infrastructure.
 
 For these reasons and more it's a best practice to create a non-root user for
 each administrator. That user will need permission to "elevate" their level of
@@ -32,7 +32,7 @@ are becoming should be processed. For example, if the user has customized their
 shell, your new identity will only assume that customization when `-` is
 present.
 
-There are *many* usages for the `su` command, but for the majority of everyday
+There are *many* uses for the `su` command, but for the majority of everyday
 tasks `sudo` will likely be sufficient and preferred.
 
 *Note: Invoking `su` with no arguments is the same as running `su - root`.*
@@ -48,23 +48,22 @@ possible, check out [the sudo manual](http://www.sudo.ws/sudo/man/1.8.2/sudoers.
 ### ON PASSWORDLESS SUDO
 
 In the [learn-ssh](https://github.com/bocoup/learn-ssh) workshop we talked about
-the importance of protecting your SSH private key with a password to prevent it from 
-being used even if the file was stolen. This, along with only allowing users to 
-authenticate using SSH to non-root accounts should mean that we can feel pretty secure
-that only known users can access our server.
+the importance of protecting your SSH private key with a password to prevent it
+from being used even if the file was stolen. This, along with only allowing
+users to authenticate using SSH to non-root accounts should mean that we can
+feel pretty secure that only known users can access our server.
 
-By default `sudo` will prompt a user for their password before executing a command with
-elevated permissions. This is not meant to prevent bad actors from accessing 
-the system. Instead, the password prompt for permission elevation is meant to guard against 
-the scenario of an unattended workstation with an active session. It also provides time for fast 
-fingered users to reflect on the command they are about to run. 
+By default `sudo` will prompt a user for their password before executing a
+command with elevated permissions. This is not meant to prevent bad actors from
+accessing the system. Instead, the password prompt for permission elevation is
+meant to guard against the scenario of an unattended workstation with an active
+session. It also provides time for fast fingered users to reflect on the command
+they are about to run.
 
-While using passwordless sudo in a local developement environment is risk free, there is a choice
-to be made for remote environments. Our recommendation is that remote servers require a password
-in order to elevate permission. Ansible and other tools have ways of securely loading credentials 
-like your password meaning you don't have to choose between automation and security. 
-
-We'll cover how to securely set a user's password in the user-management section.
+While using password-less sudo in a local developement environment is risk free,
+there is a choice to be made for remote environments. Our recommendation is that
+remote servers require a password in order to elevate permission. We'll cover
+how to securely set a user's password in the user-management section.
 
 ## EXERCISE
 
