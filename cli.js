@@ -21,6 +21,7 @@ const theme = {
 const exercises = [
   'your-development-server',
   'permissions-elevation',
+  'ansible',
   'user-management',
   'variables-loops-and-filters',
   'tasks-and-idempotency',
