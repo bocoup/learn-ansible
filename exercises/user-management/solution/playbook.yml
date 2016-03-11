@@ -1,0 +1,33 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    # There are several valid ways to do this, and the below is not the most
+    # efficient. However we believe it to be the simplest to arrive at given
+    # the boilerplate and sets us up well for a refactor in the next exercise
+    # using loops and variables
+    - name: ensure workshop user is on the box
+      user:
+        state: present
+        name: workshop
+        shell: /bin/bash
+        groups: sudo
+
+    - name: ensure the workshop user's public key is present in authorized_keys
+      authorized_key:
+        user: workshop
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3DmXNR1rP+CGfMmwcowd4wN9uf6lKaN++9SyowsOmVQyY+x1jlka4rFUxljDrbJLyTmmdwH4fcOs/6ixZlMnNkbYcC48F8YrHWZ6lcheak52q365NRViooG+LuVZU81DOv/+roY0eTBTs6d/mlRC8Us11kpKrtWi7zvFiv7Ld25Uo5yMPOxvDigJzrO0byVefq001mx5EEfDn9uH7nWU/e3wOIDls5kYtEWuI1QHWyOrbLe8O+YiHznBjWa2r6dCobr8KfyfwBuHy4PxS4f17GJ9kGQXWOrVOjMJiblkHndQ5dMn8hQAt6Vir0EJL3XFE0xox9oqxV/LCH9lHc6mj workshop
+        state: present
+
+    - name: ensure my local user is on the box
+      user:
+        state: present
+        name: YOUR_LOCAL_USERNAME # or "{{ lookup('env', 'USER') }}"
+        shell: /bin/bash
+        groups: sudo
+
+    - name: ensure my local user’s public key is present in authorized_keys
+      authorized_key:
+        user: YOUR_LOCAL_USERNAME # or "{{ lookup('env', 'USER') }}"
+        key: YOUR_LOCAL_PUBLICKEY # or "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        state: present
