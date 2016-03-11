@@ -20,7 +20,7 @@ const theme = {
 };
 const exercises = [
   'your-development-server',
-  'permissions-elevation',
+  'permission-elevation',
   'ansible',
   'user-management',
   'variables-loops-and-filters',
@@ -28,7 +28,8 @@ const exercises = [
   'control-flow',
   'nginx-up-front',
   'services-templates-and-registering-variables',
-  'your-production-server'
+  'your-production-server',
+  'managing-secrets'
 ];
 const exercisesDir = path.join(__dirname, 'exercises');
 const template = `
