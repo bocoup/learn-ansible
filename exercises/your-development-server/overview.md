@@ -19,7 +19,7 @@ See if you can connect to the vagrant machine using the `ssh` command directly.
 The IP address of your machine is specified in the Vagrantfile. Be sure to
 specify the right user!
 
-## ADD YOUR OWN USER
+## EXERCISE
 
 While connected to the VM, create a user for yourself:
 
@@ -40,3 +40,4 @@ a user or private key.
 - How does `vagrant ssh` work?
 - How do you create a user on an Ubuntu machine?
 - How do you configure password-less SSH access?
+- How do you copy a file from your machine to a remote machine using SSH?
