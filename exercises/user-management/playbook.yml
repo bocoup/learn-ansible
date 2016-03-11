@@ -12,6 +12,6 @@
 #    - name: ensure my user’s public key is present in authorized_keys
 #      authorized_key:
 #        user: USERNAME
-#        key: "PUBLIC_KEY"
+#        key: PUBLIC_KEY
 #        state: present
 #
