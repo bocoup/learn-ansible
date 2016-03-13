@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars_files:
+    -
+  tasks:
+    - name: ensure apt cache is updated
+    - name: ensure node gpg key is installed
+    - name: ensure node ppa is installed
+    - name: ensure apt packages are installed
+    - name: ensure nginx is configured
+    - name: ensure nginx has been restarted
+    - name: ensure location of node is known
+    - name: ensure app code is on the box in /mnt
+    - name: ensure upstart script for app is in place
+    - name: start app
