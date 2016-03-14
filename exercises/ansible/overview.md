@@ -27,4 +27,4 @@ We automated all that work you did in the previous exercises using Ansible.
 - What is Ansible?
 - How is it different than other tools like Chef or Puppet?
 - What is YAML?
-- What is idempotency?
+- What is a Vagrant provisioner?
