@@ -82,13 +82,26 @@ the 'sources' from which packages can be obtained. The location of this file is
 
 Sometimes, you may wish to install a package that is newer than the one which
 shipped with your Linux distribution. In this case, you need to add a new apt
-repository for it.
-
-... more here
+repository for it. These repository's are called PPA's (Personal Package 
+Archives) and can contain data about multiple pieces of software. It's a 
+good idea to run `apt-get update` after adding a new PPA so your local 
+sources list can correctly determine when to utilize the new PPA for specific
+packages.
 
 ### APT KEYS
 
-.... more here
+In order to ensure the data you're getting from a PPA has not been modified 
+or compromised authenticated public key cryptography is used. That means your
+system must be able to verify the cryptographic signature on any packages it 
+downloads before installation will take place. You may recall from our 
+`learn-ssh` workshop's `asymmetric-crypto` lesson that verifying a 
+cryptographic signature requires you to posses the public key of the signer. 
+Apt provides the `apt-key` command to add public keys to `apt`'s keyring. The
+tricky part can be tracking them down. Remember that just because something 
+is cryptographically signed and secured doesn't mean it should be installed on
+your system! Anyone can create a PPA and offer packages for download, be 
+sure you trust any PPAs that are added to your system before installing 
+software they provide.
 
 ## EXERCISE
 
