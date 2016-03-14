@@ -15,8 +15,8 @@ variables.
 ## VARIABLES
 
 In Ansible, there are [several valid places] to specify variables. For this
-exercise we're going to focus on variables that are registered directly at the
-top of the playbook using the `vars:` parameter, like so:
+exercise we're going to focus on variables registered directly on tasks, and
+at the top of the playbook using the `vars:` parameter, like so:
 
 ```
 - hosts: all
@@ -25,10 +25,6 @@ top of the playbook using the `vars:` parameter, like so:
   vars:
     some_variable: some value
 ```
-
-To reference a variable in a task, wrap it in quotes and double curly braces:
-`"{{some_variable}}"`. Variable names must begin with a letter and may contain
-letters, numbers, and underscores.
 
 If you're not sure how to define more complex data structures like dictionaries
 and lists, the Ansible docs provide a helpful [YAML syntax overview].
@@ -85,7 +81,7 @@ For example, this:
 
 For more complex data structures, like a list of dictionaries, the `item`
 variable that is passed into the task will contain properties that can be
-accessed using dot notation (`"{{ item.prop }}"`):
+accessed using dot notation:
 
 ```
 - hosts: all
@@ -111,14 +107,11 @@ using `with_fileglob`, dictionaries using `with_dict` and much more.
 Read the Ansible docs for [more looping options].
 
 ## EXERCISE
-In this exercise we'll be refactoring our work from the `user-management`
-exercise to [DRY] up the playbook by defining a data structure to store user
-information and utilizing `with_items` directives along with the `user` and
-`authorized_key` modules.
 
-You'll know you've succeed when you're able to run the following commands
-without error, and your playbook only utilizes the `user` and `authorized_key`
-modules once.
+In this exercise we'll be refactoring our work from the `user-management`
+exercise to [DRY] up the playbook by defining a user's list. We'll then iterate
+over it using the `with_items` directive. You'll know you've succeed when you're
+able to run the following commands without error:
 
 ```
 ansible-playbook \
@@ -129,12 +122,12 @@ ansible-playbook \
 ssh 10.10.10.10
 ssh -i ./workshop.pem workshop@10.10.10.10
 ```
+Your playbook should only utilize the [user] and [authorized_key] modules once.
 
 Once you've succeeded, ask yourself whether your solution is as robust as it
-could be. Does it allow users to specify multiple keys or the shell they
-prefer? Are there [filters] that might help provide sensible default values
-allowing certain user properties to be optional or [modify defined values] in
-some useful way?
+could be. Does it allow multiple public keys per user? What about specifying the
+shell they prefer? Are there [filters] that might help provide sensible default
+values, allowing properties in the user listing to be optional?
 
 ## LEARNING OBJECTIVES
  - Where are some places variables can be registered?
@@ -142,6 +135,8 @@ some useful way?
  - How do you loop over an list or dictionary in Ansible?
  - What are filters used for?
  - What other looping constructs does Ansible support?
+ - How might you specify multiple public keys with a single invocation of
+   the [authorized_key] module?
 
 [jinja2]: http://jinja.pocoo.org/docs/dev/
 [several valid places]: http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
@@ -151,4 +146,5 @@ some useful way?
 [more looping options]: http://docs.ansible.com/ansible/playbooks_loops.html
 [DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
 [filters]: http://docs.ansible.com/ansible/playbooks_filters.html#defaulting-undefined-variables
-[modify defined values]: http://docs.ansible.com/ansible/playbooks_filters.html#other-useful-filters
+[user]: http://docs.ansible.com/ansible/user_module.html
+[authorized_key]: http://docs.ansible.com/ansible/authorized_key_module.html
