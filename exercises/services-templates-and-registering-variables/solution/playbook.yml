@@ -37,7 +37,7 @@
         state: restarted
 
     - name: ensure app code is on the box in /mnt
-      copy:
+      template:
         src: node-app.js
         dest: "{{node_app_path}}"
 
