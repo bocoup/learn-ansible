@@ -13,4 +13,8 @@ Explain what it is, why it works.
 
 ## EXERCISE
 
+View the encrypted file in solution/secrets.yml. The password is learn-ansible.
+Create your own encrypted file sibling to the ansible playbook. Include it with
+the playbook level directive `var_files`.
+
 ## LEARNING OBJECTIVES
