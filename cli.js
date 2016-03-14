@@ -56,11 +56,15 @@ const template = `
         text-decoration: none;
       }
       .exercise { padding: .5em 0em; }
-      code {
+      code, pre {
         padding: 0 .25em;
         background-color: #444;
         border-radius: 3px;
         font-size: 0.90em;
+      }
+      pre {
+        display: inline-block;
+        padding: 1em;
       }
       </style>
       {{{head}}}
