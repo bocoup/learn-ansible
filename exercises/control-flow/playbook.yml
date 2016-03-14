@@ -1,4 +1,2 @@
 - hosts: all
-  become: yes
-  become_method: sudo
   tasks:
