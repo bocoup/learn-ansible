@@ -4,6 +4,6 @@ vagrant up
 ssh-keygen -R 10.10.10.10
 
 ansible-playbook -i 10.10.10.10, playbook.yml
-ssh 10.10.10.10 sudo apt-get remove git
+ssh 10.10.10.10 sudo apt-get remove nodejs
 ansible-playbook -i 10.10.10.10, playbook.yml
 vagrant destroy
