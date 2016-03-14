@@ -74,35 +74,6 @@ A `become_method` can also be specified, which tells Ansible how the permission
 elevation should happen. This defaults to `sudo`, which is probably what you'll
 want to use most of the time.
 
-### APT REPOSITORIES
-
-When you install a piece of software using apt, it references a file that lists
-the 'sources' from which packages can be obtained. The location of this file is
-`/etc/apt/sources.list`. Apt also reads from `/etc/apt/sources.list.d/`.
-
-Sometimes, you may wish to install a package that is newer than the one which
-shipped with your Linux distribution. In this case, you need to add a new apt
-repository for it. These repository's are called PPA's (Personal Package 
-Archives) and can contain data about multiple pieces of software. It's a 
-good idea to run `apt-get update` after adding a new PPA so your local 
-sources list can correctly determine when to utilize the new PPA for specific
-packages.
-
-### APT KEYS
-
-In order to ensure the data you're getting from a PPA has not been modified 
-or compromised authenticated public key cryptography is used. That means your
-system must be able to verify the cryptographic signature on any packages it 
-downloads before installation will take place. You may recall from our 
-`learn-ssh` workshop's `asymmetric-crypto` lesson that verifying a 
-cryptographic signature requires you to posses the public key of the signer. 
-Apt provides the `apt-key` command to add public keys to `apt`'s keyring. The
-tricky part can be tracking them down. Remember that just because something 
-is cryptographically signed and secured doesn't mean it should be installed on
-your system! Anyone can create a PPA and offer packages for download, be 
-sure you trust any PPAs that are added to your system before installing 
-software they provide.
-
 ## EXERCISE
 
 A playbook with named tasks has been provided. Try to fill in the missing
@@ -114,13 +85,48 @@ Try SSHing into your machine and running `sudo apt-get remove nginx` to change
 the state of the server. Log off and run your playbook again. Note how Ansible
 restores the machine to the correct state.
 
-Try removing an installation task and note that running the playbook does not
-uninstall the package! It is important to understand that Ansible leaves no
-configuration on the machines it controls. Instead, it dynamically introspects
-the state of the machine on a per-task basis each time it is run.
+Try removing an installation task from the playbook and note that running the
+playbook does not uninstall the package! It is important to understand that
+Ansible leaves no configuration on the machines it controls. Instead, it
+dynamically introspects the state of the machine on a per-task basis each time
+it is run.
 
 If you need to remove something, you will almost always be altering the `state`
 directive of the task.
+
+Before you start installing packages, take a moment to read about how apt works
+below!
+
+### APT REPOSITORIES
+
+When you install a piece of software using apt, it references a few locations
+for the 'sources' from which packages can be obtained. The primary file is
+`/etc/apt/sources.list`, but apt also reads from `/etc/apt/sources.list.d/`.
+
+Sometimes, you may wish to install a package that is newer than the one which
+shipped with your Linux distribution. In this case, you need to add a new apt
+repository for it.
+
+These repositories are called PPA's (Personal Package Archives). You'll need to
+to run `apt-get update` after adding a new PPA so `apt` correctly takes the new
+options into account during subsequent installs.
+
+### APT KEYS
+
+In order to ensure the data you're getting from a PPA has not been modified
+or compromised, authenticated public key cryptography is used. That means your
+system must be able to verify the cryptographic signature on any packages it
+downloads before installation will take place.
+
+You may recall from our `learn-ssh` workshop's `asymmetric-crypto` lesson that
+verifying a cryptographic signature requires you to posses the public key of the
+signer. Apt provides the `apt-key` command to add keys to `apt`'s keyring. The
+tricky part can be tracking them down.
+
+Remember that just because something is cryptographically signed and secured
+doesn't mean it should be installed on your system! Anyone can create a PPA and
+offer packages for download. Be sure you trust any PPAs that are added to your
+system before installing the software they provide.
 
 ## LEARNING OBJECTIVES
 
