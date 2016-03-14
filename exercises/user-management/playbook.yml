@@ -1,6 +1,4 @@
 - hosts: all
-  become: yes
-  become_method: sudo
   tasks:
 #    - name: ensure workshop user is on the box
 #      user:
@@ -14,4 +12,3 @@
 #        user: USERNAME
 #        key: PUBLIC_KEY
 #        state: present
-#

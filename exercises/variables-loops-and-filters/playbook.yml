@@ -1,6 +1,4 @@
 - hosts: all
-  become: yes
-  become_method: sudo
   tasks:
     - name: ensure local user has a matching account on the host
       user:
