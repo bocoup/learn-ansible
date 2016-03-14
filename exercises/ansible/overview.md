@@ -19,8 +19,9 @@ infrastructure management task you can imagine in an idempotent fashion.
 ## EXERCISE
 
 This one is easy, just run `vagrant up`! You'll know you were successful
-if you can SSH into the virtual machine without any manual configuration.
-We automated all that work you did in the previous exercises using Ansible.
+if you can SSH into the virtual machine as yourself without any manual
+configuration. We automated all that work you did in the previous exercises
+using Ansible.
 
 ## LEARNING OBJECTIVES
 
