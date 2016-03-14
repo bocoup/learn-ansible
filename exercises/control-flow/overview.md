@@ -75,6 +75,10 @@ ansible-playbook \
   playbook.yml
 ```
 
+Run this multiple times to see how the output is different. Also, try overriding
+the `env` variable at the command line when you run Ansible to see how it
+affects the output.
+
 ## LEARNING OBJECTIVES
 
 - What is `when` and how do you use it?
@@ -82,6 +86,7 @@ ansible-playbook \
   `when` conditional multiple times.
 - How do you use blocks?
 - How do you include tasks from external files?
+- How do you pass variables at the command line to override env?
 
 [when]: http://docs.ansible.com/ansible/playbooks_conditionals.html#the-when-statement
 [roles]: http://docs.ansible.com/ansible/playbooks_roles.html#roles
