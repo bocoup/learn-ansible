@@ -65,6 +65,31 @@ there is a choice to be made for remote environments. Our recommendation is that
 remote servers require a password in order to elevate permission. We'll cover
 how to securely set a user's password in the user-management section.
 
+### ON SHADOW PASSWORDS
+
+You might be wondering how can we set secure passwords for administrative
+users so we don't have to rely on passwordless sudo without having to collect
+everyone's password and set it manually.
+
+The answer is shadow passwords.
+
+Linux systems allow a hashed version of a user's password (along with other
+userdata) to be stored in the `/etc/shadow` file which is only readable by the
+root user, and allows the system to verify passwords without needing to store
+the password value anywhere in plain text.
+
+Ansible's `user` module provides the `password` property for this purpose. It
+works on all non-Darwin Linux systems. Because the shadow pass is a hash it
+does not need to be kept secret and can be committed to the repo with other
+public user data (like public keys).
+
+There are a few different ways to generate a shadow password, but generally
+the most straightforward is:
+
+```
+openssl passwd -1 -salt $(openssl rand -base64 6) yourpassword
+```
+
 ## EXERCISE
 
 Log in to VM you created in the last exercise (as the user `vagrant`). Next,
@@ -75,6 +100,7 @@ Hint: look up the command `visudo`.
 
 You will know you have completed the exercise when you can log in with your
 personal account and run these commands:
+
   - `sudo cat /etc/sudoers`
   - `sudo su`
   - `sudo su -`
