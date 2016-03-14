@@ -13,7 +13,7 @@ machine the task is being run on using the [debug module]. Then, it installs
 the latest version of git using the [apt module].
 
 ```
-tasks
+tasks:
   - debug:
       var: ansible_distribution
   - apt:
@@ -72,10 +72,13 @@ tasks:
 ```
 
 You can also elevate an entire playbook with `become: yes` at the top level.
+A `become_method` can also be specified, which tells Ansible how the permission
+elevation should happen. This defaults to `sudo`, which is probably what you'll
+want to use most of the time.
 
 ## EXERCISE
 
-A playbook with named tasks has been provided. Try to fill out the missing
+A playbook with named tasks has been provided. Try to fill in the missing
 configuration. Once you have the playbook working, run it multiple times,
 paying close attention the output to see that (when possible) Ansible will
 run idempotently.
@@ -88,11 +91,11 @@ Try removing an installation task and note that running the playbook does not
 remove it! Ansible leaves no configuration on the machines it controls. Instead,
 it dynamically introspects the state of the machine on a per-task basis as
 needed. If you need to remove something, you will almost always be altering the
-`state` directive of the task.
+`state` directive of the task and setting it to `absent`.
 
 ## LEARNING OBJECTIVES
 
-- How do you find documentation for an Ansible module?
+- Where is the best place to look for documentation about an Ansible module?
 - How do you install an apt package using Ansible?
 - Why do you need to update apt cache before installing things?
 - What are apt-keys and repositories?
@@ -100,7 +103,8 @@ needed. If you need to remove something, you will almost always be altering the
 - What is idempotency?
 - How does Ansible indicate if something changed?
 - How does Ansible indicate if something changed when a loop is used?
-- What happens on the next run of a playbook if you remove something?
+- What happens on the next run of a playbook if you delete something instead of
+  changing its `state`?
 
 [debug module]: http://docs.ansible.com/ansible/debug_module.html
 [apt module]: http://docs.ansible.com/ansible/apt_module.html
