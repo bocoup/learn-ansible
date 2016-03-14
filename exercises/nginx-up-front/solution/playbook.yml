@@ -3,7 +3,6 @@
   become_method: sudo
   vars:
     packages:
-      - git
       - nodejs
       - ruby2.3
       - nginx

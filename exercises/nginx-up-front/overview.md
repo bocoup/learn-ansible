@@ -103,7 +103,7 @@ to the public).
 - What is an NGINX upstream?
 - How do you configure NGINX to proxy requests to an upstream provider?
 - What is the cause of a NGINX 502 error?
-- How can you use `curl` to see the response headers from a HTTP request?
+- How can you use `curl` to see the response headers from an HTTP request?
 - How do you copy code from your local machine to a remote host with Ansible?
 
 [NGINX]: http://nginx.org
