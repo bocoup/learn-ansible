@@ -1,18 +1,19 @@
 # USER MANAGEMENT
+
 In a previous exercise we learned how to manage user accounts on a Linux machine
 using the command `adduser`. We also experienced the joy of manually creating,
-managing the permissions for, and populating the `.ssh` directory with an
+managing the permissions for, and populating your `~/.ssh` directory with an
 `authorized_keys` file. While this approach to user management does work, it's
 tedious and prone to human error.
 
-Ansible's [`user`](http://docs.ansible.com/ansible/user_module.html) and [`authorized_key`](http://docs.ansible.com/ansible/authorized_key_module.html)
-modules can help us to streamline and automate these tasks in an idempotent
-way. It's a good idea to read through the documentation for each new module
-before you start using it.
+Ansible's [user] and [authorized_key] modules can help us to streamline and
+automate these tasks in an idempotent way. It's a good idea to read through
+the documentation for each new module before you start using it.
 
 ## EXERCISE
+
 Use Ansible to add your user and the workshop user to the Vagrant box. This
-exercise comes with a Vagrant file, a boilerplate playbook with commented
+exercise comes with a Vagrant file, and a boilerplate playbook with commented
 sections to help get you started.
 
 You'll know you're done after you bring your Vagrant box up and can run the
@@ -24,7 +25,7 @@ ansible-playbook \
   --private-key .vagrant/machines/default/virtualbox/private_key \
   -i 10.10.10.10, \
   playbook.yml
-ssh LOCAL_USERNAME@10.10.10.10
+ssh 10.10.10.10
 ssh -i ./workshop.pem workshop@10.10.10.10
 ```
 
@@ -37,3 +38,6 @@ Ask an instructor if you're not sure what an error is reporting.
  - How do you run Ansible against a remote server?
  - How do you specify a user should be present using Ansible?
  - How do you specify a private key should be present using Ansible?
+
+[user]: http://docs.ansible.com/ansible/user_module.html
+[authorized_key]: http://docs.ansible.com/ansible/authorized_key_module.html
