@@ -1,11 +1,22 @@
 - hosts: all
-  become: yes
-  become_method: sudo
   tasks:
+    - name: ensure node gpg key is installed from nodesource
+      apt_key:
+
+    - name: ensure node apt repository is installed from nodesource
+      apt_repository:
+
+    - name: ensure ruby "brightbox" apt repository is installed from launchpad
+      apt_repository:
+
     - name: ensure apt cache is updated
-    - name: ensure ruby ppa is installed
-    - name: ensure node ppa is installed
-    - name: ensure node gpg key is installed
+      apt:
+
     - name: ensure nodejs is installed
+      apt:
+
     - name: ensure ruby2.3 is installed
+      apt:
+
     - name: ensure nginx is installed
+      apt:
