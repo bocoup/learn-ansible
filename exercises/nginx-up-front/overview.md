@@ -15,7 +15,7 @@ but it's much better to have NGINX in front, proxying requests to them.
 NGINX is written in C, has a smaller memory footprint, and is faster than HTTP
 servers written in high level programming languages.
 
-Here are some things you might prefer to do in NGINX over your application code:
+Here are some things you might prefer to do in NGINX instead of your application code:
 
 - Serve static assets
 - Handle redirects
