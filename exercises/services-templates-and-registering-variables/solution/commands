@@ -1,0 +1,13 @@
+vagrant up
+
+# only needed if bad entry is in known_hosts already
+ssh-keygen -R 10.10.10.10
+
+ansible-playbook -i 10.10.10.10, playbook.yml
+
+# browse to http://10.10.10.10
+# refresh for several seconds to confirm the page remains live
+# recall this is code that is known to have a 25% chance of
+# crashing every 5 seconds.
+
+vagrant destroy
