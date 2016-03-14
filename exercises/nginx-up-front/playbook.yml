@@ -1,0 +1,23 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    packages:
+      - git
+      - nodejs
+      - ruby2.3
+      - nginx
+    apt_keys:
+      - https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    apt_repos:
+      - ppa:brightbox/ruby-ng
+      - deb https://deb.nodesource.com/node_5.x trusty main
+  tasks:
+    - name: ensure apt cache is updated
+    - name: ensure apt keys are installed for non-launchpad repos
+    - name: ensure apt repositories are installed
+    - name: ensure apt packages are installed
+    - name: ensure nginx is configured
+    - name: ensure nginx has been restarted
+    - name: ensure app code is on the box in /mnt
+      # hint, check out with_fileglob
