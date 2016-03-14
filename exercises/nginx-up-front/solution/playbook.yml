@@ -13,11 +13,6 @@
       - ppa:brightbox/ruby-ng
       - deb https://deb.nodesource.com/node_5.x trusty main
   tasks:
-    - name: ensure apt cache is updated
-      apt:
-        update_cache: yes
-        cache_valid_time: 3600
-
     - name: ensure apt keys are installed for non-launchpad repos
       apt_key:
         url: "{{item}}"
@@ -29,6 +24,11 @@
         repo: "{{item}}"
         state: present
       with_items: "{{apt_repos}}"
+
+    - name: ensure apt cache is updated
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
 
     - name: ensure apt packages are installed
       apt:
