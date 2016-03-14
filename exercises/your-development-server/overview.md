@@ -1,8 +1,8 @@
 # YOUR DEVELOPMENT SERVER
 
-This exercise contains a [Vagrantfile](http://vagrantup) which we will use to
-create a virtual machine running Ubuntu. You can get started using Vagrant with
-just a few commands:
+This exercise contains a [Vagrantfile] which we will use to create a virtual
+machine running Ubuntu. You can get started using Vagrant with just a few
+commands:
 
 - To start the server, run `vagrant up`
 - To shut down the server (saving your changes), run `vagrant halt`
@@ -41,3 +41,5 @@ a user or private key.
 - How do you create a user on an Ubuntu machine?
 - How do you configure password-less SSH access?
 - How do you copy a file from your machine to a remote machine using SSH?
+
+[Vagrantfile]: http://vagrantup.com
