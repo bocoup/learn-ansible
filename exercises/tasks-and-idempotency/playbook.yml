@@ -1,13 +1,15 @@
 - hosts: all
   tasks:
-    - name: ensure node gpg key is installed from nodesource
-      apt_key:
+    - name: ensure ruby "brightbox" apt repository is installed from launchpad
+      apt_repository:
 
     - name: ensure node apt repository is installed from nodesource
       apt_repository:
 
-    - name: ensure ruby "brightbox" apt repository is installed from launchpad
-      apt_repository:
+    - name: ensure node gpg key is installed from deb.nodesource.com
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        state: present
 
     - name: ensure apt cache is updated
       apt:
