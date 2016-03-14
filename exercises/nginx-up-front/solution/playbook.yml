@@ -28,7 +28,6 @@
     - name: ensure apt cache is updated
       apt:
         update_cache: yes
-        cache_valid_time: 3600
 
     - name: ensure apt packages are installed
       apt:
