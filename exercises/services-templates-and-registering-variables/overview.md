@@ -105,9 +105,10 @@ In this exercise we'll configure a service to run a small NodeJS application
 and serve it via NGINX. A working example has been provided, but the
 implementation is brittle—everything is hard coded.
 
-Refactor the upstart script as a template that accepts variables containing the
-full path to the NodeJS runtime and the application script. Then, refactor the
-playbook to `register` the needed variables before the template task is called.
+Refactor the included upstart script (`node-app.conf`) as a template that
+accepts variables containing the full path to the NodeJS runtime and the
+application script (`node-app.js`). Then, refactor the included playbook to
+`register` the needed variables before the template task is called.
 
 You'll know you've been successful when you're able to visit http://10.10.10.10
 and your deployment scripts are using templates and variables.
