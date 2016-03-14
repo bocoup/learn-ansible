@@ -1,0 +1,51 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: ensure apt cache is updated
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: ensure node gpg key is installed
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        state: present
+
+    - name: ensure node ppa is installed
+      apt_repository:
+        repo: deb https://deb.nodesource.com/node_5.x trusty main
+        state: present
+
+    - name: ensure apt packages are installed
+      apt:
+        name: "{{item}}"
+        state: latest
+      with_items:
+        - nodejs
+        - nginx
+
+    - name: ensure nginx is configured
+      template:
+        src: nginx.conf
+        dest: /etc/nginx/conf.d/
+
+    - name: ensure nginx has been restarted
+      service:
+        name: nginx
+        state: restarted
+
+    - name: ensure location of node is known
+      command: which nodejs
+      register: node_path
+
+    - name: ensure app code is on the box in /mnt
+      template:
+        src: app.js
+        dest: /mnt/
+
+    - name: ensure upstart script for app is in place
+      template: src=app.conf dest=/etc/init
+
+    - name: start app
+      service: name=app state=started
