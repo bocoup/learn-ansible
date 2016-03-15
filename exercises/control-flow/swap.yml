@@ -1,5 +1,5 @@
 - name: ensure swapfile exists
-  command: fallocate -l {{swap_file_size}} /swap
+  command: fallocate -l {{swap_file_size}} {{swap_file_path}}
   args:
     creates: "{{swap_file_path}}"
 
