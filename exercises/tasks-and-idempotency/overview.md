@@ -81,6 +81,10 @@ configuration. Once you have the playbook working, run it multiple times,
 paying close attention the output to see that (when possible) Ansible will
 run idempotently.
 
+```
+ansible-playbook -i 10.10.10.10, playbook.yml
+```
+
 Try SSHing into your machine and running `sudo apt-get remove nginx` to change
 the state of the server. Log off and run your playbook again. Note how Ansible
 restores the machine to the correct state.
