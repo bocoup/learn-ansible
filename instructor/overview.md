@@ -14,14 +14,14 @@ The instructor will begin each section by using this overview file as a guide
 to explain the new concept. After fielding any questions, attendees will begin
 development on their own machine.
 
-## your-development-server (30 minutes)
-## permission-elevation  (15 minutes)
+## your-development-server (40 minutes)
+## permission-elevation  (20 minutes)
 ## ansible (10 minutes)
-## user-management (15 minutes)
+## tasks-and-idempotency (25 minutes)
+## user-management (25 minutes)
 ## variables-loops-and-filters (20 minutes)
-## tasks-and-idempotency (20 minutes)
 ## control-flow (30 minutes)
-## nginx-up-front (20 minutes)
+## nginx-up-front (30 minutes)
 ## services-templates-and-registering-variables (45 minutes)
-## your-production-server (1 hour)
+## your-production-server (20 minutes)
 ## managing-secrets (15 minutes)
