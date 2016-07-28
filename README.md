@@ -3,6 +3,6 @@
 
 ### How do I start?
 
-1. `npm install -g learn-ansible`
+1. `npm install -g bocoup/learn-ansible`
 4. Wait for the workshop to begin.
 5. Run `learn-ansible`!
