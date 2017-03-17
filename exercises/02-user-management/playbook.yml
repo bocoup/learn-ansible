@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: ensure workshop user is on the box
+      user:
+        state:
+        name:
+        shell:
+        groups:
+
+    - name: ensure the workshop user's public key is present in authorized_keys
+      authorized_key:
+        user:
+        key:
+        state:

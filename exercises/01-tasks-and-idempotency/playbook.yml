@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+    - name: ensure apt cache is updated
+      apt:
+
+    - name: ensure nodejs is installed
+      apt:
+
+    - name: ensure ruby is installed
+      apt:
+
+    - name: ensure nginx is installed
+      apt:

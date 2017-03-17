@@ -1,0 +1,22 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    env: development
+    swap_file_path: /swap
+    swap_file_size: 2GB
+  tasks:
+    - name: log some output
+      debug:
+        msg: just a test message, nothing to see here
+
+    - block:
+      - name: check if swap file exists
+        stat:
+          path: "{{swap_file_path}}"
+        register: swap_file_check
+
+      - include: swap.yml
+        when: "{{not swap_file_check.stat.exists}}"
+
+      when: "{{env == 'development'}}"

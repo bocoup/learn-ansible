@@ -1,9 +1,0 @@
-vagrant up
-
-# only needed if bad entry is in known_hosts already
-ssh-keygen -R 10.10.10.10
-
-ansible-playbook \
-  -u vagrant \
-  --private-key .vagrant/machines/default/virtualbox/private_key \
-  -i 10.10.10.10, playbook.yml
