@@ -1,0 +1,34 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    packages:
+      - nodejs
+      - ruby
+      - nginx
+  tasks:
+    - name: ensure apt cache is updated
+      apt:
+        update_cache: yes
+
+    - name: ensure apt packages are installed
+      apt:
+        name: "{{item}}"
+        state: latest
+      with_items: "{{packages}}"
+
+    - name: ensure nginx is configured
+      template:
+        src: nginx.conf
+        dest: /etc/nginx/conf.d/
+
+    - name: ensure nginx has been restarted
+      service:
+        name: nginx
+        state: restarted
+
+    - name: ensure app code is on the box in /mnt
+      copy:
+        src: "{{item}}"
+        dest: /mnt/
+      with_fileglob: app.*

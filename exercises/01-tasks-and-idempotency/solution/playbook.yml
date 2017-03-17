@@ -1,0 +1,23 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: ensure apt cache is updated
+      apt:
+        update_cache: yes
+
+    - name: ensure nodejs is installed
+      apt:
+        name: nodejs
+        state: latest
+        update_cache: yes
+
+    - name: ensure ruby is installed
+      apt:
+        name: ruby
+        state: latest
+
+    - name: ensure nginx is installed
+      apt:
+        name: nginx
+        state: latest

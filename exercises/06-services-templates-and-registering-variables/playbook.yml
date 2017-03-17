@@ -1,0 +1,30 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: ensure apt cache is updated
+      apt:
+        update_cache: yes
+
+    - name: ensure apt packages are installed
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - nodejs
+        - nginx
+
+    - name: ensure nginx is configured
+      template:
+
+    - name: ensure nginx has been restarted
+      service:
+
+    - name: ensure app code is on the box in /mnt
+      copy:
+
+    - name: ensure upstart script for app is in place
+      copy:
+
+    - name: start app
+      service:
